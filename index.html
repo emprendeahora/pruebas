@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Actividad - Mentorías Ruta C</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        'ruta-blue': '#001E4C',
+                        'ruta-accent': '#0056B3',
+                        'ruta-cyan': '#00A3E0'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .animation-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        .animation-slide-up { animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Ocultar scrollbar modales */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Drag & Drop Zones */
+        .drop-zone { border: 2px dashed #CBD5E1; transition: all 0.3s ease; }
+        .drop-zone.dragover { border-color: #0056B3; background-color: #F0F7FF; }
+        
+        /* Diagnostico styles basicos */
+        .card-option { transition: all 0.3s ease; border: 2px solid #E2E8F0; }
+        .card-option.selected { border-color: #0056B3; background-color: #F0F7FF; }
+        .opt-radio::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); width: 10px; height: 10px; border-radius: 50%; background: #0056B3; transition: transform 0.2s; }
+        .option-item.selected .opt-radio::after { transform: translate(-50%, -50%) scale(1); }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 p-4 md:p-6 flex justify-center text-slate-800">
+
+    <div class="max-w-7xl w-full">
+        
+        <header class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 bg-ruta-blue p-6 rounded-2xl shadow-xl relative z-20 gap-4 overflow-hidden">
+            <!-- Deco circle -->
+            <div class="absolute -right-10 -top-20 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="flex items-center gap-5 relative z-10">
+                <img src="https://img.tiendasicam32.net/rutac/rutac_blanco.png" alt="Ruta C" class="h-12 md:h-14 object-contain" />
+                <div class="hidden sm:block w-px h-10 bg-blue-800"></div>
+                <div class="hidden sm:block">
+                    <p class="text-[11px] text-ruta-cyan font-bold tracking-widest uppercase flex items-center gap-1.5">
+                        <i data-lucide="zap" class="w-3.5 h-3.5"></i> ASISTENCIA DE SESIÓN
+                    </p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3 relative z-10">
+                <span class="text-[10px] text-blue-300 font-bold uppercase tracking-widest">Operado por:</span>
+                <div class="bg-white px-2 py-1 rounded-md shadow-sm h-10 flex items-center justify-center">
+                    <img src="data:image/jpeg;base64,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" alt="Emprende Ahora" class="h-8 object-contain" />
+                </div>
+            </div>
+        </header>
+
+        <div class="flex gap-6 lg:gap-8 flex-col md:flex-row">
+            <div class="w-full md:w-72 shrink-0">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sticky top-6">
+                    <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wider mb-6">Progreso de Sesión</h3>
+                    <div class="relative flex flex-col gap-6">
+                        <!-- Línea vertical -->
+                        <div class="absolute left-[15px] top-4 bottom-4 w-[2px] bg-slate-100 z-0"></div>
+                        
+                        <!-- Paso 1 -->
+                        <div class="relative flex items-start gap-4 z-10 cursor-pointer group" onclick="goToStep(1)">
+                            <div id="step-circle-1" class="w-8 h-8 rounded-full flex items-center justify-center bg-ruta-accent border-4 border-blue-100 text-white shadow-sm transition-all z-10 shrink-0">
+                                <span id="step-number-1" class="font-bold text-sm">1</span>
+                                <i id="step-check-1" data-lucide="check" class="w-4 h-4 hidden"></i>
+                            </div>
+                            <div id="step-text-1" class="pt-1 transition-colors">
+                                <span class="font-bold text-sm text-slate-800 block leading-tight group-hover:text-ruta-accent">Datos y Diagnóstico</span>
+                                <p class="text-xs text-slate-500 mt-0.5">Identificación inicial</p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 2 -->
+                        <div class="relative flex items-start gap-4 z-10 cursor-pointer group" onclick="goToStep(2)">
+                            <div id="step-circle-2" class="w-8 h-8 rounded-full flex items-center justify-center bg-white border-2 border-slate-300 text-slate-400 transition-all z-10 shrink-0">
+                                <span id="step-number-2" class="font-bold text-sm">2</span>
+                                <i id="step-check-2" data-lucide="check" class="w-4 h-4 hidden"></i>
+                            </div>
+                            <div id="step-text-2" class="pt-1 transition-colors">
+                                <span class="font-semibold text-sm text-slate-500 block leading-tight group-hover:text-ruta-accent">Metodología</span>
+                                <p class="text-xs text-slate-400 mt-0.5">Reto y Solución</p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 3 -->
+                        <div class="relative flex items-start gap-4 z-10 cursor-pointer group" onclick="goToStep(3)">
+                            <div id="step-circle-3" class="w-8 h-8 rounded-full flex items-center justify-center bg-white border-2 border-slate-300 text-slate-400 transition-all z-10 shrink-0">
+                                <span id="step-number-3" class="font-bold text-sm">3</span>
+                                <i id="step-check-3" data-lucide="check" class="w-4 h-4 hidden"></i>
+                            </div>
+                            <div id="step-text-3" class="pt-1 transition-colors">
+                                <span class="font-semibold text-sm text-slate-500 block leading-tight group-hover:text-ruta-accent">Asistencia y Plan</span>
+                                <p class="text-xs text-slate-400 mt-0.5">Hoja de ruta</p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 4 -->
+                        <div class="relative flex items-start gap-4 z-10 cursor-pointer group" onclick="goToStep(4)">
+                            <div id="step-circle-4" class="w-8 h-8 rounded-full flex items-center justify-center bg-white border-2 border-slate-300 text-slate-400 transition-all z-10 shrink-0">
+                                <span id="step-number-4" class="font-bold text-sm">4</span>
+                                <i id="step-check-4" data-lucide="check" class="w-4 h-4 hidden"></i>
+                            </div>
+                            <div id="step-text-4" class="pt-1 transition-colors">
+                                <span class="font-semibold text-sm text-slate-500 block leading-tight group-hover:text-ruta-accent">Entregables</span>
+                                <p class="text-xs text-slate-400 mt-0.5">Soportes finales</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+                
+                <div class="p-6 md:p-8 flex-1">
+                    
+                    <!-- ============================================== -->
+                    <!-- PASO 1: SELECCIÓN Y DIAGNÓSTICO -->
+                    <!-- ============================================== -->
+                    <div id="step-content-1" class="space-y-8 animation-fade-in block">
+                        <div>
+                            <h2 class="text-2xl font-bold text-ruta-blue">Información Inicial</h2>
+                            <p class="text-slate-500 text-sm mt-1">Busque la UP en la base de datos y ejecute el diagnóstico técnico.</p>
+                        </div>
+                        
+                        <!-- HU 1: Checklist de Introducción -->
+                        <div class="bg-blue-50 border border-blue-100 rounded-xl p-5">
+                            <h4 class="text-sm font-bold text-blue-900 mb-3 flex items-center gap-2">
+                                <i data-lucide="list-checks" class="w-4 h-4"></i> Checklist de Introducción
+                            </h4>
+                            <div class="space-y-2">
+                                <label class="flex items-start gap-3 cursor-pointer group">
+                                    <input type="checkbox" id="chk-intro-1" class="mt-1 w-4 h-4 text-ruta-accent rounded border-gray-300 focus:ring-ruta-accent" onchange="validateStep1()">
+                                    <span class="text-sm text-blue-800 group-hover:text-blue-950">He mencionado a la UP que este programa es operado por <strong>Emprende Ahora</strong>.</span>
+                                </label>
+                                <label class="flex items-start gap-3 cursor-pointer group">
+                                    <input type="checkbox" id="chk-intro-2" class="mt-1 w-4 h-4 text-ruta-accent rounded border-gray-300 focus:ring-ruta-accent" onchange="validateStep1()">
+                                    <span class="text-sm text-blue-800 group-hover:text-blue-950">He explicado el objetivo de la sesión y la metodología a trabajar.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- HU 0: Buscador BD y Autocompletado -->
+                        <div class="border border-slate-200 rounded-xl p-5">
+                            <h4 class="text-sm font-bold text-slate-800 mb-3">0. Selección de la UP (Vincular BD)</h4>
+                            <div class="flex gap-3 mb-6">
+                                <div class="relative flex-1">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i data-lucide="search" class="w-4 h-4 text-slate-400"></i>
+                                    </div>
+                                    <input type="text" id="search-up-input" class="w-full pl-10 pr-3 py-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-ruta-accent focus:border-ruta-accent outline-none transition-all" placeholder="Ingrese NIT o Nombre de la empresa para buscar...">
+                                </div>
+                                <button type="button" id="btn-buscar-up" onclick="simularBusquedaUP()" class="bg-slate-800 hover:bg-slate-900 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2 whitespace-nowrap">
+                                    Buscar UP
+                                </button>
+                            </div>
+                            
+                            <!-- Campos Autocompletables -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-100 opacity-70 transition-opacity" id="up-fields-container">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1">Nombre Entidad</label>
+                                    <input type="text" id="nombre-entidad" readonly class="w-full bg-slate-200 border-transparent rounded px-3 py-2 text-sm text-slate-700 font-medium cursor-not-allowed" placeholder="Autocompletado...">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1">NIT</label>
+                                    <input type="text" id="nit" readonly class="w-full bg-slate-200 border-transparent rounded px-3 py-2 text-sm text-slate-700 font-medium cursor-not-allowed" placeholder="Autocompletado...">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1">Representante/Encargado</label>
+                                    <input type="text" id="nombre-recibe" readonly class="w-full bg-slate-200 border-transparent rounded px-3 py-2 text-sm text-slate-700 font-medium cursor-not-allowed" placeholder="Autocompletado...">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1">Correo U.P.</label>
+                                    <input type="email" id="correo-entidad" readonly class="w-full bg-slate-200 border-transparent rounded px-3 py-2 text-sm text-slate-700 font-medium cursor-not-allowed" placeholder="Autocompletado...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- HU 1: Diagnóstico Integrado -->
+                        <div class="bg-gradient-to-r from-ruta-blue to-ruta-accent rounded-xl p-6 text-white shadow-md relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+                            <i data-lucide="microscope" class="absolute -right-4 -bottom-4 w-32 h-32 text-white opacity-10"></i>
+                            <div class="relative z-10 flex-1">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Módulo Técnico</span>
+                                </div>
+                                <h3 class="font-bold text-xl mb-1">Diagnóstico Empresarial</h3>
+                                <p class="text-blue-100 text-sm">Ejecuta la evaluación técnica interactiva para identificar el reto principal y autocompletar el desarrollo metodológico.</p>
+                            </div>
+                            <button type="button" onclick="openDiagnosticModal()" class="relative z-10 shrink-0 bg-white text-ruta-blue hover:bg-blue-50 px-6 py-3 rounded-lg text-sm font-bold transition-transform transform hover:-translate-y-0.5 shadow-lg flex items-center gap-2">
+                                Iniciar Diagnóstico <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2 border-t border-slate-100">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5">Consultor Asignado</label>
+                                <select id="consultor" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm text-slate-700 focus:ring-2 focus:ring-ruta-accent focus:border-ruta-accent outline-none bg-white">
+                                    <option value="">Seleccione...</option>
+                                    <option>Óscar Solano</option><option>Jeannie Salinas</option><option>Alexandra Martínez</option>
+                                    <option>Andrés Arévalo</option><option>Carolina Zabala</option><option>Maira Mendivil</option>
+                                    <option>Jorge Murillo</option><option>Iván Bastidas</option><option>María José Sierra</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5">Correo del Consultor</label>
+                                <input id="correo-consultor" type="email" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm text-slate-700 focus:ring-2 focus:ring-ruta-accent focus:border-ruta-accent outline-none bg-white" placeholder="ejemplo@rutac.com" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5">Fecha inicio sesión</label>
+                                <input id="fecha-inicio" type="datetime-local" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm text-slate-700 focus:ring-2 focus:ring-ruta-accent focus:border-ruta-accent outline-none bg-white" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-1.5">Fecha fin sesión</label>
+                                <input id="fecha-fin" type="datetime-local" class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm text-slate-700 focus:ring-2 focus:ring-ruta-accent focus:border-ruta-accent outline-none bg-white" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================== -->
+                    <!-- PASO 2: DESARROLLO METODOLÓGICO -->
+                    <!-- ============================================== -->
+                    <div id="step-content-2" class="space-y-8 animation-fade-in hidden">
+                        <div>
+                            <h2 class="text-2xl font-bold text-ruta-blue">Desarrollo de la Sesión</h2>
+                            <p class="text-slate-500 text-sm mt-1">Estructura técnica de la intervención (2 horas).</p>
+                        </div>
+
+                        <!-- HU 2: Necesidad Prioritaria (Simulador Texto Enriquecido) -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-800 mb-2">1. Necesidad prioritaria (Punto de dolor)</label>
+                            <div class="border border-slate-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-ruta-accent focus-within:border-ruta-accent transition-all bg-white">
+                                <div class="bg-slate-50 border-b border-slate-200 px-3 py-2 flex items-center gap-1">
+                                    <button class="toolbar-btn"><i data-lucide="bold" class="w-4 h-4 text-slate-600"></i></button>
+                                    <button class="toolbar-btn"><i data-lucide="italic" class="w-4 h-4 text-slate-600"></i></button>
+                                    <button class="toolbar-btn"><i data-lucide="list" class="w-4 h-4 text-slate-600"></i></button>
+                                    <div class="w-px h-4 bg-slate-300 mx-2"></div>
+                                    <button class="toolbar-btn"><i data-lucide="heading-2" class="w-4 h-4 text-slate-600"></i></button>
+                                </div>
+                                <textarea id="fase-necesidad" class="w-full p-4 text-sm outline-none resize-y min-h-[100px]" placeholder="Describa el hallazgo principal. Si usó el diagnóstico, esta información se autocompletará aquí..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- HU 3 y HU 7: Reto Estratégico y Profundización -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-5 rounded-xl border border-slate-200">
+                            <div>
+                                <label class="flex justify-between items-end mb-2">
+                                    <span class="text-sm font-bold text-slate-800">2. Reto estratégico (SMART)</span>
+                                    <span id="char-counter" class="text-xs font-semibold text-amber-600 bg-amber-100 px-2 py-0.5 rounded">0/50 min.</span>
+                                </label>
+                                <textarea id="fase-reto" oninput="contarCaracteres(this)" class="w-full border border-slate-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-ruta-accent outline-none h-24 resize-none" placeholder="Redacte el objetivo SMART definido..."></textarea>
+                                <p class="text-[11px] text-slate-500 mt-1">Mínimo 50 caracteres para validar el detalle del objetivo.</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-800 mb-2">Pregunta de profundización</label>
+                                <p class="text-xs text-slate-500 mb-2">Detalle el proceso exacto a mejorar (Ej. Ventas corporativas, Reclutamiento).</p>
+                                <input type="text" id="area-profundizacion" class="w-full border border-slate-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-ruta-accent outline-none bg-white mb-2" placeholder="Área o proceso específico...">
+                                
+                                <!-- Mensaje alerta opcional -->
+                                <div class="bg-blue-50 text-blue-700 p-2 rounded text-xs flex items-start gap-2 border border-blue-100">
+                                    <i data-lucide="info" class="w-3.5 h-3.5 shrink-0 mt-0.5"></i>
+                                    <span>Este foco debe alinearse directamente con la solución a proponer abajo.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- HU 4 y HU 5: Solución y Herramienta -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-bold text-slate-800 mb-2">3. Solución conceptual propuesta</label>
+                                <textarea id="fase-solucion" class="w-full border border-slate-300 rounded-lg p-4 text-sm focus:ring-2 focus:ring-ruta-accent outline-none h-24 resize-none" placeholder="Fundamente la estrategia teórica seleccionada..."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-bold text-slate-800 mb-2">Herramienta técnica (Select menu)</label>
+                                <select id="herramienta-tecnica" class="w-full border border-slate-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-ruta-accent outline-none bg-white">
+                                    <option value="">Seleccionar metodología específica...</option>
+                                    <optgroup label="Gestión Comercial">
+                                        <option value="Lienzo Propuesta de Valor">Lienzo Propuesta de Valor</option>
+                                        <option value="Embudo de Ventas">Embudo de Ventas</option>
+                                        <option value="Plan Marketing Digital">Plan Marketing Digital</option>
+                                        <option value="CRM Básico">Implementación CRM Básico</option>
+                                    </optgroup>
+                                    <optgroup label="Gerencia y Estrategia">
+                                        <option value="Matriz DOFA">Matriz DOFA</option>
+                                        <option value="Business Model Canvas">Business Model Canvas</option>
+                                        <option value="Flujo de Caja">Estructura de Flujo de Caja</option>
+                                    </optgroup>
+                                    <optgroup label="Eficiencia y Operaciones">
+                                        <option value="Mapeo de Procesos">Mapeo de Procesos (Flujograma)</option>
+                                        <option value="Metodología 5S">Metodología 5S</option>
+                                    </optgroup>
+                                    <optgroup label="Innovación">
+                                        <option value="Ruta Automatización Zapier">Ruta Automatización (No-Code)</option>
+                                        <option value="Customer Journey">Customer Journey Map</option>
+                                        <option value="Prototipado MVP">Hoja de ruta MVP</option>
+                                    </optgroup>
+                                    <optgroup label="Talento Humano">
+                                        <option value="Organigrama">Estructura y Organigrama</option>
+                                        <option value="Manual Funciones">Manual de Funciones</option>
+                                    </optgroup>
+                                    <option value="Otra">Otra (Especificar en solución)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="flex items-center justify-center bg-slate-50 border border-slate-200 border-dashed rounded-lg p-4">
+                                <p class="text-xs text-slate-500 text-center">La herramienta seleccionada dictará la evidencia requerida en el <strong>Paso 4</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================== -->
+                    <!-- PASO 3: PLAN DE ACCIÓN Y ASISTENCIA -->
+                    <!-- ============================================== -->
+                    <div id="step-content-3" class="space-y-8 animation-fade-in hidden">
+                        <div>
+                            <h2 class="text-2xl font-bold text-ruta-blue">Plan y Asistencia</h2>
+                            <p class="text-slate-500 text-sm mt-1">Definición de ruta y formalización de compromisos.</p>
+                        </div>
+
+                        <!-- HU 6: Plan de Acción -->
+                        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                            <div class="bg-slate-50 border-b border-slate-200 p-4 flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">Plan de Acción (Roadmap)</h4>
+                                    <p class="text-xs text-slate-500">Agregue hitos concretos (Qué, Quién, Cuándo).</p>
+                                </div>
+                                <button type="button" onclick="addPlanRow()" class="bg-white border border-slate-300 hover:border-ruta-accent hover:text-ruta-accent px-3 py-1.5 rounded text-xs font-bold transition-colors flex items-center gap-1.5 shadow-sm">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Añadir Hito
+                                </button>
+                            </div>
+                            <div class="p-4 bg-white overflow-x-auto">
+                                <table class="w-full text-left min-w-[700px]">
+                                    <thead>
+                                        <tr class="text-xs text-slate-500 uppercase tracking-wide border-b border-slate-200">
+                                            <th class="pb-2 pr-2 w-1/3">Acción Clave (Qué)</th>
+                                            <th class="pb-2 px-2 w-[20%]">Métrica/Meta</th>
+                                            <th class="pb-2 px-2 w-[20%]">Límite (Cuándo)</th>
+                                            <th class="pb-2 px-2 w-[20%]">Resp. (Quién)</th>
+                                            <th class="pb-2 pl-2 w-8 text-center">Del</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="plan-table-body" class="text-sm">
+                                        <!-- Inyectado por JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- HU 8: Firma de Asistencia -->
+                            <div class="bg-green-50 border border-green-200 rounded-xl p-5 relative overflow-hidden">
+                                <i data-lucide="shield-check" class="absolute -right-4 -bottom-4 w-24 h-24 text-green-600 opacity-10"></i>
+                                <h4 class="font-bold text-green-900 text-sm mb-1 relative z-10">Firma de Asistencia Digital</h4>
+                                <p class="text-xs text-green-700 mb-4 relative z-10">Genere el enlace único y envíelo a la UP en tiempo real.</p>
+                                
+                                <div class="flex items-center gap-2 relative z-10">
+                                    <input type="text" readonly value="https://ruta-c.com/firma/xt89pQ" id="link-asistencia" class="flex-1 bg-white border border-green-300 rounded p-2 text-xs text-slate-600 focus:outline-none" />
+                                    <button type="button" id="btn-copy-attendance" onclick="copyAttendanceLink()" class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs font-bold transition-colors shadow-sm whitespace-nowrap flex items-center gap-1.5">
+                                        <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copiar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- HU 9: Participantes adicionales -->
+                            <div class="border border-slate-200 rounded-xl p-5">
+                                <div class="flex justify-between items-center mb-3">
+                                    <h4 class="font-bold text-slate-800 text-sm">Participantes Adicionales</h4>
+                                    <button type="button" onclick="addParticipantRow()" class="text-ruta-accent hover:text-ruta-blue text-xs font-bold flex items-center gap-1 transition-colors">
+                                        <i data-lucide="user-plus" class="w-3.5 h-3.5"></i> Añadir
+                                    </button>
+                                </div>
+                                <div id="participants-container" class="space-y-2">
+                                    <!-- Inyectado por JS -->
+                                    <p class="text-xs text-slate-400 italic" id="empty-participants">No hay participantes adicionales. Haga clic en Añadir.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ============================================== -->
+                    <!-- PASO 4: ENTREGABLES Y CIERRE -->
+                    <!-- ============================================== -->
+                    <div id="step-content-4" class="space-y-6 animation-fade-in hidden pb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-ruta-blue">Carga de Entregables</h2>
+                            <p class="text-slate-500 text-sm mt-1">Anexe los soportes formales de la sesión. Validación estricta: Máx 5MB.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                            <!-- HU 10: Evidencia Fotográfica (Drag & Drop) -->
+                            <div>
+                                <label class="block text-sm font-bold text-slate-800 mb-2">1. Evidencia Fotográfica</label>
+                                <div id="drop-foto" class="drop-zone bg-slate-50 rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer group">
+                                    <div class="w-12 h-12 bg-white rounded-full shadow-sm border border-slate-200 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="image" class="w-5 h-5 text-slate-400 group-hover:text-ruta-accent"></i>
+                                    </div>
+                                    <p class="text-sm font-semibold text-slate-700 text-center mb-1">Arrastra y suelta tu imagen aquí</p>
+                                    <p class="text-xs text-slate-400 text-center mb-3">o haz clic para explorar en tu equipo</p>
+                                    <span class="text-[10px] uppercase font-bold text-slate-400 bg-slate-200 px-2 py-0.5 rounded">PNG, JPG (Máx. 5MB)</span>
+                                    <input type="file" id="file-foto" class="hidden" accept="image/*" onchange="handleFileSelect(this, 'file-name-foto')" />
+                                    <p id="file-name-foto" class="text-xs text-ruta-accent font-semibold mt-3 hidden truncate max-w-full px-4"></p>
+                                </div>
+                            </div>
+
+                            <!-- HU 10: Herramienta Técnica (Drag & Drop) -->
+                            <div>
+                                <label class="block text-sm font-bold text-slate-800 mb-2">2. Documento Herramienta</label>
+                                <div id="drop-doc" class="drop-zone bg-slate-50 rounded-xl p-8 flex flex-col items-center justify-center cursor-pointer group">
+                                    <div class="w-12 h-12 bg-white rounded-full shadow-sm border border-slate-200 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="file-text" class="w-5 h-5 text-slate-400 group-hover:text-ruta-accent"></i>
+                                    </div>
+                                    <p class="text-sm font-semibold text-slate-700 text-center mb-1">Arrastra y suelta el PDF aquí</p>
+                                    <p class="text-xs text-slate-400 text-center mb-3">o haz clic para explorar en tu equipo</p>
+                                    <span class="text-[10px] uppercase font-bold text-slate-400 bg-slate-200 px-2 py-0.5 rounded">PDF, XLS (Máx. 5MB)</span>
+                                    <input type="file" id="file-herramienta" class="hidden" accept=".pdf,.xls,.xlsx,.doc,.docx" onchange="handleFileSelect(this, 'file-name-doc')" />
+                                    <p id="file-name-doc" class="text-xs text-ruta-accent font-semibold mt-3 hidden truncate max-w-full px-4"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info Cierre -->
+                        <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg mt-6">
+                            <h4 class="text-sm font-bold text-amber-900 flex items-center gap-2">
+                                <i data-lucide="info" class="w-4 h-4"></i> Revisión Final
+                            </h4>
+                            <p class="text-xs text-amber-700 mt-1">Al hacer clic en "Finalizar Sesión", se compilará la data en una plantilla oficial y se enviará notificación automática a la UP, CCSM y Emprende Ahora. Verifique que todo esté correcto.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="bg-slate-50 p-6 border-t border-slate-200 flex justify-between items-center" id="nav-buttons">
+                    <div class="flex items-center gap-3">
+                        <button id="btn-prev" onclick="prevStep()" class="px-5 py-2.5 rounded-lg text-sm font-bold transition-colors border border-slate-300 text-slate-400 cursor-not-allowed bg-white flex items-center gap-2" disabled>
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i> Anterior
+                        </button>
+                        
+                        <!-- Botón de Inasistencia Superior en UI -->
+                        <button id="btn-no-show" onclick="openNoShowModal()" class="px-4 py-2.5 rounded-lg text-sm font-bold bg-red-50 text-red-300 border border-red-100 cursor-not-allowed flex items-center gap-2 transition-all" disabled title="Se habilita 15 min después de la hora de inicio">
+                            <i data-lucide="user-x" class="w-4 h-4"></i> Marcar Inasistencia
+                        </button>
+                    </div>
+                    
+                    <button id="btn-next" onclick="nextStep()" class="px-6 py-2.5 rounded-lg text-sm font-bold bg-ruta-accent text-white hover:bg-blue-800 shadow-md transition-colors flex items-center gap-2">
+                        Siguiente <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+
+                    <!-- HU 11: Envío de reporte final -->
+                    <div id="final-buttons" class="hidden items-center gap-4">
+                        <button id="btn-submit" onclick="submitData()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-lg shadow-md transition-transform transform hover:-translate-y-0.5 flex items-center gap-2">
+                            <span>Finalizar Sesión</span>
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal: Éxito -->
+    <div id="success-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm px-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animation-slide-up text-center">
+            <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-5">
+                <i data-lucide="check-circle" class="w-8 h-8 text-emerald-600"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-2">¡Reporte Finalizado!</h2>
+            <p class="text-slate-500 text-sm mb-6">El sistema ha enviado los correos oficiales y cerrado el estado de la cita.</p>
+            
+            <button onclick="closeSuccessModal()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-lg transition-colors">
+                Cerrar Ventana
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal: Inasistencia (HU) -->
+    <div id="no-show-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm px-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animation-slide-up text-center">
+            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="user-x" class="w-8 h-8 text-red-600"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-red-700 mb-2">Reportar No Asistencia</h2>
+            <p class="text-slate-500 text-sm mb-6">Selecciona una opción para gestionar este espacio.</p>
+
+            <div class="flex flex-col gap-3">
+                <button onclick="alert('Sistema enviará alertas rojas al Dashboard CCSM y correos a la UP.'); closeNoShowModal();" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg shadow-sm flex items-center justify-center gap-2">
+                    Confirmar Inasistencia (No Asistió)
+                </button>
+                <button onclick="alert('Espacio liberado. Use la función Reagendar.'); closeNoShowModal();" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-lg shadow-sm flex items-center justify-center gap-2">
+                    Liberar y Reagendar
+                </button>
+                <button onclick="closeNoShowModal()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-lg mt-2">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="diagnostic-modal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-ruta-blue/90 backdrop-blur-sm p-4 md:p-6 overflow-hidden">
+        <div class="bg-slate-50 rounded-2xl shadow-2xl w-full max-w-4xl h-full max-h-[90vh] flex flex-col animation-slide-up relative">
+            
+            <div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center bg-white rounded-t-2xl z-10 shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="bg-blue-100 p-2 rounded-full text-ruta-accent">
+                        <i data-lucide="microscope" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-ruta-blue leading-none">Diagnóstico Técnico</h2>
+                        <p class="text-xs text-slate-500 mt-1" id="diag-progress-label">Evaluación interactiva rápida</p>
+                    </div>
+                </div>
+                <button onclick="closeDiagnosticModal()" class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-6 md:p-8 no-scrollbar relative" id="diag-scroll-container">
+                
+                <!-- DIAG PASO 1: ETAPA -->
+                <div id="diag-step-1" class="block animation-fade-in max-w-3xl mx-auto">
+                    <h3 class="text-2xl font-bold text-ruta-blue mb-2 text-center">Etapa Empresarial</h3>
+                    <p class="text-slate-500 text-center mb-8 text-sm">Selecciona la etapa que mejor describe el momento actual de la UP.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="diag-etapa-grid">
+                        <!-- JS Inyectará tarjetas -->
+                    </div>
+                    <div class="mt-8 flex justify-center">
+                        <button id="btn-diag-step-1" disabled onclick="goDiagStep(2)" class="px-8 py-3 bg-ruta-accent hover:bg-blue-800 text-white font-bold rounded-lg shadow transition-colors disabled:opacity-50 disabled:cursor-not-allowed">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- DIAG PASO 2: LÍNEA -->
+                <div id="diag-step-2" class="hidden animation-fade-in max-w-3xl mx-auto">
+                    <h3 class="text-2xl font-bold text-ruta-blue mb-2 text-center">Área a Diagnosticar</h3>
+                    <p class="text-slate-500 text-center mb-8 text-sm">Elige la línea de intervención a trabajar en la sesión de hoy.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="diag-linea-grid"></div>
+                    <div class="mt-8 flex justify-center gap-4">
+                        <button onclick="goDiagStep(1)" class="px-6 py-3 bg-white border border-slate-300 text-slate-700 font-bold rounded-lg hover:bg-slate-50">Atrás</button>
+                        <button id="btn-diag-step-2" disabled onclick="goDiagStep(3)" class="px-8 py-3 bg-ruta-accent hover:bg-blue-800 text-white font-bold rounded-lg shadow transition-colors disabled:opacity-50 disabled:cursor-not-allowed">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- DIAG PASO 3: PREGUNTAS -->
+                <div id="diag-step-3" class="hidden animation-fade-in max-w-2xl mx-auto">
+                    <h3 class="text-2xl font-bold text-ruta-blue mb-2 text-center">Profundización</h3>
+                    <p class="text-slate-500 text-center mb-8 text-sm">Responde con la realidad actual del empresario.</p>
+                    <div id="diag-questions-container" class="space-y-6"></div>
+                    <div class="mt-8 flex justify-center gap-4">
+                        <button onclick="goDiagStep(2)" class="px-6 py-3 bg-white border border-slate-300 text-slate-700 font-bold rounded-lg hover:bg-slate-50">Atrás</button>
+                        <button id="btn-diag-step-3" disabled onclick="handleDiagQuestionsSubmit()" class="px-8 py-3 bg-ruta-accent hover:bg-blue-800 text-white font-bold rounded-lg shadow transition-colors disabled:opacity-50 disabled:cursor-not-allowed">Generar Resultados</button>
+                    </div>
+                </div>
+
+                <!-- DIAG PASO 4: RESULTADOS Y EXPORTACIÓN (Con texto argumentativo) -->
+                <div id="diag-step-4" class="hidden animation-fade-in max-w-3xl mx-auto">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm text-center">
+                        <div class="inline-block bg-blue-100 text-ruta-accent px-4 py-1.5 rounded-full text-xs font-bold mb-4 uppercase tracking-widest" id="diag-res-area"></div>
+                        <div class="text-6xl font-black text-ruta-blue mb-1" id="diag-res-score"></div>
+                        <div class="text-slate-500 font-bold text-sm mb-8" id="diag-res-level"></div>
+                        
+                        <div class="text-left space-y-6 mb-8">
+                            <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl">
+                                <h4 class="text-sm font-bold text-slate-800 mb-2 border-b border-slate-200 pb-2">1. Análisis de Situación</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed" id="diag-res-par1"></p>
+                            </div>
+                            <div class="bg-red-50 border border-red-100 p-5 rounded-xl">
+                                <h4 class="text-sm font-bold text-red-900 mb-2 flex items-center gap-2"><i data-lucide="alert-circle" class="w-4 h-4"></i> 2. Impacto del Problema (Reto)</h4>
+                                <p class="text-sm text-red-800 leading-relaxed" id="diag-res-par2"></p>
+                            </div>
+                            <div class="bg-emerald-50 border border-emerald-100 p-5 rounded-xl">
+                                <h4 class="text-sm font-bold text-emerald-900 mb-2 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4"></i> 3. Ruta de Acción (Solución)</h4>
+                                <p class="text-sm text-emerald-800 leading-relaxed" id="diag-res-par3"></p>
+                            </div>
+                        </div>
+
+                        <button onclick="importDiagnosticToReport()" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition-transform transform hover:-translate-y-0.5 flex items-center justify-center gap-2 w-full">
+                            <i data-lucide="download" class="w-5 h-5"></i> Importar Textos al Reporte y Cerrar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // --- SISTEMA DEL STEPPER ---
+        const totalSteps = 4;
+        let currentStep = 1;
+
+        function renderSteps() {
+            for (let i = 1; i <= totalSteps; i++) {
+                const circle = document.getElementById(`step-circle-${i}`);
+                const text = document.getElementById(`step-text-${i}`);
+                const check = document.getElementById(`step-check-${i}`);
+                const num = document.getElementById(`step-number-${i}`);
+
+                if (i < currentStep) {
+                    // Completado
+                    circle.className = "w-8 h-8 rounded-full flex items-center justify-center bg-blue-100 border-2 border-transparent text-ruta-accent transition-all z-10 shrink-0";
+                    check.classList.remove('hidden'); num.classList.add('hidden');
+                    text.querySelector('span').className = "font-bold text-sm text-slate-800 block leading-tight";
+                } else if (i === currentStep) {
+                    // Activo
+                    circle.className = "w-8 h-8 rounded-full flex items-center justify-center bg-ruta-accent border-4 border-blue-100 text-white shadow-sm transition-all z-10 shrink-0";
+                    check.classList.add('hidden'); num.classList.remove('hidden');
+                    text.querySelector('span').className = "font-bold text-sm text-ruta-accent block leading-tight";
+                } else {
+                    // Pendiente
+                    circle.className = "w-8 h-8 rounded-full flex items-center justify-center bg-white border-2 border-slate-300 text-slate-400 transition-all z-10 shrink-0";
+                    check.classList.add('hidden'); num.classList.remove('hidden');
+                    text.querySelector('span').className = "font-semibold text-sm text-slate-500 block leading-tight";
+                }
+
+                // Mostrar/Ocultar Contenidos
+                const content = document.getElementById(`step-content-${i}`);
+                if (i === currentStep) {
+                    content.classList.remove('hidden'); content.classList.add('block');
+                } else {
+                    content.classList.add('hidden'); content.classList.remove('block');
+                }
+            }
+
+            // Botones Inferiores
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+            const finalButtons = document.getElementById('final-buttons');
+
+            btnPrev.disabled = currentStep === 1;
+            btnPrev.className = currentStep === 1 ? "px-5 py-2.5 rounded-lg text-sm font-bold transition-colors border border-slate-300 text-slate-400 cursor-not-allowed bg-white flex items-center gap-2" : "px-5 py-2.5 rounded-lg text-sm font-bold transition-colors border border-slate-300 text-slate-700 hover:bg-slate-50 bg-white flex items-center gap-2";
+
+            if (currentStep === totalSteps) {
+                btnNext.classList.add('hidden'); btnNext.classList.remove('flex');
+                finalButtons.classList.remove('hidden'); finalButtons.classList.add('flex');
+            } else {
+                btnNext.classList.remove('hidden'); btnNext.classList.add('flex');
+                finalButtons.classList.add('hidden'); finalButtons.classList.remove('flex');
+            }
+        }
+
+        function nextStep() { if (currentStep < totalSteps) { currentStep++; renderSteps(); window.scrollTo(0,0); } }
+        function prevStep() { if (currentStep > 1) { currentStep--; renderSteps(); window.scrollTo(0,0); } }
+        function goToStep(n) { currentStep = n; renderSteps(); window.scrollTo(0,0); }
+
+
+        // --- HU 0: SIMULADOR AUTOCOMPLETAR UP ---
+        function simularBusquedaUP() {
+            const input = document.getElementById('search-up-input').value;
+            const btn = document.getElementById('btn-buscar-up');
+            if(!input) { alert("Ingrese un NIT o Nombre"); return; }
+            
+            // Visual loading
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Buscando...`;
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                // Rellenar datos
+                document.getElementById('nombre-entidad').value = "Innova Tech S.A.S.";
+                document.getElementById('nit').value = "900.123.456-7";
+                document.getElementById('nombre-recibe').value = "María Camila Rojas";
+                document.getElementById('correo-entidad').value = "gerencia@innovatech.com";
+                
+                // Efecto visual de desbloqueo
+                const container = document.getElementById('up-fields-container');
+                container.classList.remove('opacity-70', 'bg-slate-50');
+                container.classList.add('opacity-100', 'bg-blue-50/50', 'border-blue-200');
+                
+                const inputs = container.querySelectorAll('input');
+                inputs.forEach(i => {
+                    i.classList.remove('bg-slate-200', 'cursor-not-allowed', 'text-slate-700');
+                    i.classList.add('bg-white', 'text-blue-900', 'border-blue-300');
+                });
+                
+                btn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i> Encontrada`;
+                btn.classList.replace('bg-slate-800', 'bg-emerald-600');
+                btn.classList.replace('hover:bg-slate-900', 'hover:bg-emerald-700');
+                lucide.createIcons();
+                
+                setTimeout(() => { btn.innerHTML = originalText; btn.className = "bg-slate-800 hover:bg-slate-900 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2 whitespace-nowrap"; lucide.createIcons(); }, 3000);
+            }, 800);
+        }
+
+        // --- HU 3: CONTADOR RETO SMART ---
+        function contarCaracteres(el) {
+            const count = el.value.length;
+            const counter = document.getElementById('char-counter');
+            counter.innerText = `${count}/50 min.`;
+            if(count >= 50) {
+                counter.className = "text-xs font-semibold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded";
+            } else {
+                counter.className = "text-xs font-semibold text-amber-600 bg-amber-100 px-2 py-0.5 rounded";
+            }
+        }
+
+        // --- HU 9: PARTICIPANTES DINÁMICOS ---
+        function addParticipantRow() {
+            const container = document.getElementById('participants-container');
+            const emptyMsg = document.getElementById('empty-participants');
+            if(emptyMsg) emptyMsg.style.display = 'none';
+
+            const row = document.createElement('div');
+            row.className = "flex flex-col md:flex-row gap-2 items-start md:items-center bg-slate-50 p-2 rounded border border-slate-200 animation-fade-in";
+            row.innerHTML = `
+                <input type="text" placeholder="Nombre completo" class="flex-1 w-full text-xs p-2 border border-slate-300 rounded outline-none focus:border-ruta-accent">
+                <input type="text" placeholder="Cédula" class="w-full md:w-28 text-xs p-2 border border-slate-300 rounded outline-none focus:border-ruta-accent">
+                <input type="text" placeholder="Cargo/Rol" class="w-full md:w-32 text-xs p-2 border border-slate-300 rounded outline-none focus:border-ruta-accent">
+                <button type="button" onclick="this.parentElement.remove()" class="p-2 text-red-500 hover:bg-red-50 rounded transition-colors self-end md:self-auto"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+            `;
+            container.appendChild(row);
+            lucide.createIcons();
+        }
+
+        // --- HU 10: DRAG & DROP VALIDATION ---
+        function setupDragAndDrop() {
+            const zones = ['drop-foto', 'drop-doc'];
+            zones.forEach(id => {
+                const zone = document.getElementById(id);
+                const input = zone.querySelector('input[type="file"]');
+                
+                // Click para abrir file picker
+                zone.addEventListener('click', () => input.click());
+                
+                // Prevenir comportamientos default
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                    zone.addEventListener(eventName, preventDefaults, false);
+                });
+
+                // Estilos visuales
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    zone.addEventListener(eventName, () => zone.classList.add('dragover'), false);
+                });
+                ['dragleave', 'drop'].forEach(eventName => {
+                    zone.addEventListener(eventName, () => zone.classList.remove('dragover'), false);
+                });
+
+                // Drop handling
+                zone.addEventListener('drop', (e) => {
+                    let dt = e.dataTransfer;
+                    let files = dt.files;
+                    input.files = files; // Asignar archivos al input oculto
+                    // Disparar evento change manualmente
+                    const event = new Event('change');
+                    input.dispatchEvent(event);
+                }, false);
+            });
+        }
+        function preventDefaults (e) { e.preventDefault(); e.stopPropagation(); }
+
+        function handleFileSelect(input, labelId) {
+            const file = input.files[0];
+            const label = document.getElementById(labelId);
+            
+            if(file) {
+                // Validar 5MB = 5 * 1024 * 1024 bytes
+                if(file.size > 5242880) {
+                    alert("Error: El archivo excede el límite máximo de 5MB.");
+                    input.value = ""; // Limpiar
+                    label.classList.add('hidden');
+                    return;
+                }
+                label.innerText = file.name;
+                label.classList.remove('hidden');
+                // Estilo a la zona para mostrar éxito
+                input.parentElement.classList.add('border-emerald-500', 'bg-emerald-50');
+            }
+        }
+
+        // --- HU 6: PLAN DE ACCIÓN TABLA ---
+        function addPlanRow() {
+            const tbody = document.getElementById('plan-table-body');
+            const tr = document.createElement('tr');
+            tr.className = "border-b border-slate-100 hover:bg-slate-50 transition-colors";
+            tr.innerHTML = `
+                <td class="pb-2 pr-2 pt-2"><input type="text" class="w-full border border-slate-300 rounded p-2 text-xs outline-none focus:border-ruta-accent bg-white" placeholder="Ej. Aumentar leads"></td>
+                <td class="p-2"><input type="text" class="w-full border border-slate-300 rounded p-2 text-xs outline-none focus:border-ruta-accent bg-white" placeholder="Ej. 50 nuevos"></td>
+                <td class="p-2"><input type="date" class="w-full border border-slate-300 rounded p-2 text-xs outline-none focus:border-ruta-accent bg-white"></td>
+                <td class="p-2"><input type="text" class="w-full border border-slate-300 rounded p-2 text-xs outline-none focus:border-ruta-accent bg-white" placeholder="Nombre"></td>
+                <td class="p-2 text-center"><button type="button" onclick="this.closest('tr').remove()" class="text-red-400 hover:text-red-600 transition-colors"><i data-lucide="x-circle" class="w-4 h-4 mx-auto"></i></button></td>
+            `;
+            tbody.appendChild(tr);
+            lucide.createIcons();
+        }
+
+        // --- LÓGICA DE INASISTENCIA (15 MIN) ---
+        function checkNoShowEligibility() {
+            const fi = document.getElementById('fecha-inicio').value;
+            const btn = document.getElementById('btn-no-show');
+            if (fi) {
+                const diffMins = (new Date().getTime() - new Date(fi).getTime()) / 60000;
+                if (diffMins >= 15) {
+                    btn.disabled = false;
+                    btn.className = "px-4 py-2.5 rounded-lg text-sm font-bold bg-red-100 text-red-600 border border-red-200 hover:bg-red-200 cursor-pointer flex items-center gap-2 transition-all shadow-sm";
+                    btn.title = "Reportar inasistencia";
+                }
+            }
+        }
+        setInterval(checkNoShowEligibility, 30000);
+
+        function openNoShowModal() { document.getElementById('no-show-modal').classList.remove('hidden'); document.getElementById('no-show-modal').classList.add('flex'); }
+        function closeNoShowModal() { document.getElementById('no-show-modal').classList.add('hidden'); document.getElementById('no-show-modal').classList.remove('flex'); }
+
+
+        // --- STREAMING_CHUNK: LÓGICA DIAGNÓSTICO INTEGRADO Y TEXTOS ARGUMENTATIVOS ---
+        const ETAPAS = [
+            { id: 'nacimiento', name: 'Nacimiento', icon: '<i data-lucide="sprout" class="w-8 h-8"></i>' },
+            { id: 'despegue', name: 'Despegue', icon: '<i data-lucide="rocket" class="w-8 h-8"></i>' },
+            { id: 'crecimiento', name: 'Crecimiento', icon: '<i data-lucide="trending-up" class="w-8 h-8"></i>' }
+        ];
+        const LINEAS = [
+            { id: 'comercial', name: 'Gestión Comercial', icon: '<i data-lucide="shopping-bag" class="w-8 h-8"></i>' },
+            { id: 'gerencia', name: 'Estrategia', icon: '<i data-lucide="target" class="w-8 h-8"></i>' },
+            { id: 'eficiencia', name: 'Operaciones', icon: '<i data-lucide="settings" class="w-8 h-8"></i>' }
+        ];
+        const PREGUNTAS = {
+            comercial: [
+                { id: 'C1', texto: '¿Tienes claro por qué tus clientes te eligen?', opciones: [{texto:'No tengo claro', p:0}, {texto:'Idea general', p:50}, {texto:'Sí, bien definida', p:100}] },
+                { id: 'C2', texto: '¿Cómo controlas las ventas?', opciones: [{texto:'Sin proceso', p:0}, {texto:'Solo anoto', p:50}, {texto:'Uso CRM', p:100}] }
+            ],
+            gerencia: [
+                { id: 'G1', texto: '¿Analizas a la competencia?', opciones: [{texto:'No', p:0}, {texto:'A veces', p:50}, {texto:'Sistemáticamente', p:100}] }
+            ],
+            eficiencia: [
+                { id: 'E1', texto: '¿Tienes procesos documentados?', opciones: [{texto:'Nada', p:0}, {texto:'Un poco', p:50}, {texto:'Todo en manuales', p:100}] }
+            ]
+        };
+
+        let diagData = { etapa: null, linea: null, respuestas: {} };
+        let diagResult = { herr: '', obj: '', arg: '' };
+
+        function openDiagnosticModal() { 
+            document.getElementById('diagnostic-modal').classList.remove('hidden'); 
+            document.getElementById('diagnostic-modal').classList.add('flex');
+            goDiagStep(1); 
+        }
+        function closeDiagnosticModal() { 
+            document.getElementById('diagnostic-modal').classList.add('hidden'); 
+            document.getElementById('diagnostic-modal').classList.remove('flex'); 
+        }
+
+        function goDiagStep(n) {
+            [1,2,3,4].forEach(i => {
+                const el = document.getElementById(`diag-step-${i}`);
+                if(el) { el.classList.add('hidden'); el.classList.remove('block'); }
+            });
+            document.getElementById(`diag-step-${n}`).classList.remove('hidden');
+            document.getElementById(`diag-step-${n}`).classList.add('block');
+
+            if(n===1) renderDiagCards('diag-etapa-grid', ETAPAS, 'etapa');
+            if(n===2) renderDiagCards('diag-linea-grid', LINEAS, 'linea');
+            if(n===3) renderDiagQuestions();
+        }
+
+        function renderDiagCards(containerId, arr, type) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = arr.map(item => `
+                <div class="card-option bg-white rounded-xl p-6 text-center cursor-pointer relative" onclick="selectDiagCard('${type}','${item.id}', this)">
+                    <div class="text-ruta-accent mb-3 flex justify-center">${item.icon}</div>
+                    <div class="font-bold text-slate-800">${item.name}</div>
+                    <div class="absolute top-2 right-2 hidden check-icon"><i data-lucide="check-circle-2" class="w-5 h-5 text-ruta-accent bg-white rounded-full"></i></div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function selectDiagCard(type, id, el) {
+            const container = el.parentElement;
+            container.querySelectorAll('.card-option').forEach(c => {
+                c.classList.remove('selected');
+                c.querySelector('.check-icon').classList.add('hidden');
+            });
+            el.classList.add('selected');
+            el.querySelector('.check-icon').classList.remove('hidden');
+            diagData[type] = id;
+            document.getElementById(`btn-diag-step-${type==='etapa'?1:2}`).disabled = false;
+        }
+
+        function renderDiagQuestions() {
+            const container = document.getElementById('diag-questions-container');
+            const qs = PREGUNTAS[diagData.linea] || PREGUNTAS.gerencia;
+            container.innerHTML = qs.map((q, i) => `
+                <div class="bg-white p-5 rounded-xl border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-3">${i+1}. ${q.texto}</h4>
+                    <div class="space-y-2">
+                        ${q.opciones.map((op, oi) => `
+                            <div class="option-item flex items-center gap-3 p-3 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50" onclick="selectDiagOpt('${q.id}', ${op.p}, this)">
+                                <div class="opt-radio w-5 h-5 rounded-full border-2 border-slate-400 relative shrink-0 bg-white"></div>
+                                <span class="text-sm text-slate-700">${op.texto}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+            diagData.respuestas = {};
+        }
+
+        function selectDiagOpt(qid, val, el) {
+            const container = el.parentElement;
+            container.querySelectorAll('.option-item').forEach(o => { o.classList.remove('selected'); o.querySelector('.opt-radio').style.borderColor='#94a3b8'; });
+            el.classList.add('selected'); el.querySelector('.opt-radio').style.borderColor='#0056B3';
+            diagData.respuestas[qid] = val;
+            
+            const totalQs = (PREGUNTAS[diagData.linea] || PREGUNTAS.gerencia).length;
+            document.getElementById('btn-diag-step-3').disabled = Object.keys(diagData.respuestas).length < totalQs;
+        }
+
+        function handleDiagQuestionsSubmit() {
+            // Calcular Score
+            let total = 0; let count = 0;
+            for(let key in diagData.respuestas) { total += diagData.respuestas[key]; count++; }
+            let score = Math.round(total / count);
+            let nivel = score < 40 ? 'Nivel Inicial' : (score < 80 ? 'Nivel Medio' : 'Nivel Avanzado');
+
+            // TEXTOS ARGUMENTATIVOS (HU 3)
+            let areaName = LINEAS.find(l=>l.id===diagData.linea).name;
+            let etapaName = ETAPAS.find(e=>e.id===diagData.etapa).name;
+            
+            // Lógica dummy para definir herramienta y textos según el área
+            let herrSelect = ''; let textImpact = ''; let textSol = '';
+            
+            if(diagData.linea === 'comercial') {
+                herrSelect = 'Embudo de Ventas';
+                textImpact = `Si la empresa no mejora su sistema de atracción y seguimiento de clientes, experimentará un estancamiento en sus ingresos, limitando su capacidad operativa y perdiendo cuota de mercado frente a competidores más estructurados.`;
+                textSol = `Se vuelve imperativo implementar la herramienta de ${herrSelect}. Esto permitirá estructurar el paso a paso del cliente (desde la prospección hasta el cierre), garantizando predictibilidad en las ventas y una base sólida para el crecimiento.`;
+            } else if(diagData.linea === 'gerencia') {
+                herrSelect = 'Business Model Canvas';
+                textImpact = `La falta de claridad estratégica genera decisiones intuitivas que desangran el flujo de caja. Sin un análisis profundo del entorno, la empresa opera 'a ciegas', poniendo en riesgo su viabilidad a mediano plazo.`;
+                textSol = `Se recomienda aplicar el ${herrSelect} para reestructurar la lógica de generación de ingresos. Esto proporcionará a la gerencia una visión 360 del negocio, asegurando que los recursos se inviertan en las áreas que realmente aportan valor.`;
+            } else {
+                herrSelect = 'Mapeo de Procesos';
+                textImpact = `La actual dependencia operativa de los fundadores genera cuellos de botella diarios. Esta improvisación produce reprocesos, afecta la calidad final entregada al cliente y satura al equipo de trabajo.`;
+                textSol = `La intervención debe centrarse en el ${herrSelect}. Al estandarizar el 'paso a paso' de las actividades clave, la empresa logrará reducir tiempos muertos, facilitar la delegación y preparar la operación para escalar sin fracturarse.`;
+            }
+
+            let textSit = `El análisis estratégico de la empresa (actualmente en etapa de ${etapaName}), revela un índice de madurez del ${score}% en el área de ${areaName}. Esto indica que, si bien existen fundamentos operativos, la estructura actual presenta debilidades críticas en el control y medición de procesos.`;
+
+            diagResult.herr = herrSelect;
+            diagResult.arg = `1. ANÁLISIS DE SITUACIÓN:\n${textSit}\n\n2. IMPACTO DEL PROBLEMA:\n${textImpact}\n\n3. RUTA DE ACCIÓN:\n${textSol}`;
+            diagResult.obj = `Implementar la metodología de ${herrSelect} durante el presente ciclo, con el fin de estructurar el área de ${areaName}, logrando así reducir reprocesos y aumentar la eficiencia de la empresa en los próximos 3 meses.`;
+
+            // UI
+            document.getElementById('diag-res-area').innerText = areaName;
+            document.getElementById('diag-res-score').innerText = score + '%';
+            document.getElementById('diag-res-level').innerText = nivel;
+            document.getElementById('diag-res-par1').innerText = textSit;
+            document.getElementById('diag-res-par2').innerText = textImpact;
+            document.getElementById('diag-res-par3').innerText = textSol;
+
+            goDiagStep(4);
+        }
+
+        function importDiagnosticToReport() {
+            // Importar al editor Rich Text (Simulado con textarea)
+            document.getElementById('fase-necesidad').value = diagResult.arg;
+            
+            // Importar Reto SMART (dispara contador automáticamente)
+            const retoTextarea = document.getElementById('fase-reto');
+            retoTextarea.value = diagResult.obj;
+            contarCaracteres(retoTextarea);
+
+            // Importar Herramienta
+            const selectHerr = document.getElementById('herramienta-tecnica');
+            for(let i=0; i<selectHerr.options.length; i++) {
+                if(selectHerr.options[i].value === diagResult.herr) {
+                    selectHerr.selectedIndex = i; break;
+                }
+            }
+
+            // Opcional: Escribir la solución teórica
+            document.getElementById('fase-solucion').value = `Ejecución metodológica de ${diagResult.herr} para mitigar los riesgos identificados en el análisis previo.`;
+            
+            closeDiagnosticModal();
+            // Notificar éxito visualmente si está en el paso 1
+            if(currentStep === 1) nextStep();
+        }
+
+        // --- SUBMIT FINAL ---
+        function submitData() {
+            // En un caso real aquí se validaría peso de archivos y se enviaría a GAS.
+            // HU 11: Envío de reporte final
+            alert("Sistema: Compilando data en plantilla oficial PDF...");
+            document.getElementById('success-modal').classList.remove('hidden');
+            document.getElementById('success-modal').classList.add('flex');
+            lucide.createIcons();
+        }
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+
+        // INIT
+        setupDragAndDrop();
+        addPlanRow(); addPlanRow();
+        renderSteps();
+    </script>
+</body>
+</html>
