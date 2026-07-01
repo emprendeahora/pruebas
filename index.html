@@ -128,7 +128,7 @@
                         </div>
                         <div id="step-text-3" class="pt-1 text-center md:text-left">
                             <span class="text-xs font-bold text-slate-400 block md:hidden">03</span>
-                            <span class="font-semibold text-sm md:text-base text-slate-400">Plan de Asistencia</span>
+                            <span class="font-semibold text-sm md:text-base text-slate-400">Plan Asistencia</span>
                         </div>
                     </div>
 
@@ -142,7 +142,7 @@
                         </div>
                         <div id="step-text-4" class="pt-1 text-center md:text-left">
                             <span class="text-xs font-bold text-slate-400 block md:hidden">04</span>
-                            <span class="font-semibold text-sm md:text-base text-slate-400">Soportes y Firmas</span>
+                            <span class="font-semibold text-sm md:text-base text-slate-400">Profundización</span>
                         </div>
                     </div>
 
@@ -155,7 +155,7 @@
                         </div>
                         <div id="step-text-5" class="pt-1 text-center md:text-left">
                             <span class="text-xs font-bold text-slate-400 block md:hidden">05</span>
-                            <span class="font-semibold text-sm md:text-base text-slate-400">Profundización</span>
+                            <span class="font-semibold text-sm md:text-base text-slate-400">Soportes y Firmas</span>
                         </div>
                     </div>
                 </div>
@@ -262,29 +262,40 @@
                     <div id="step-content-2" class="space-y-6 animation-fade-in hidden">
                         <div class="mb-4">
                             <h2 class="text-2xl font-bold text-ruta-blue mb-1">Metodología de Intervención</h2>
-                            <p class="text-slate-500 text-sm">Información importada del diagnóstico y definición del reto.</p>
+                            <p class="text-slate-500 text-sm">Información importada del diagnóstico y definición del enfoque.</p>
                         </div>
 
                         <!-- Prioridad y Dolor -->
                         <div class="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
-                            <div class="bg-slate-50 border-b border-slate-200 px-5 py-3">
-                                <h4 class="font-bold text-slate-800 text-sm">Prioridad y Dolor (Necesidad Principal)</h4>
-                                <p class="text-xs text-slate-500 mt-1">Aquí se importa automáticamente la información desarrollada durante el diagnóstico sobre el estado actual de la empresa.</p>
+                            <div class="bg-slate-50 border-b border-slate-200 px-5 py-4">
+                                <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2"><i data-lucide="alert-triangle" class="w-4 h-4 text-ruta-accent"></i> Prioridad y Dolor (Necesidad Principal)</h4>
+                                <p class="text-xs text-slate-500 mt-2 leading-relaxed">Justifique de manera argumentativa la necesidad o dolor principal identificado en la unidad productiva. Detalle cómo afecta actualmente la operación, las finanzas o el crecimiento de la empresa, basándose en los hallazgos del diagnóstico.</p>
                             </div>
                             <div class="p-5">
-                                <textarea id="prioridad-dolor" class="w-full border border-slate-300 rounded-md p-3 outline-none focus:ring-2 focus:ring-ruta-light text-sm min-h-[120px]" placeholder="Ej. La empresa no tiene claro su margen de rentabilidad real..."></textarea>
+                                <textarea id="prioridad-dolor" class="w-full border border-slate-300 rounded-md p-3 outline-none focus:ring-2 focus:ring-ruta-light text-sm min-h-[120px]" placeholder="Ej. La empresa presenta un estancamiento en sus ventas debido a que no tiene estructurado un embudo comercial, lo cual genera que se pierda el 70% de los prospectos iniciales..."></textarea>
                             </div>
                         </div>
 
                         <!-- Reto Estratégico (SMART) -->
                         <div class="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
-                            <div class="bg-slate-50 border-b border-slate-200 px-5 py-3">
-                                <h4 class="font-bold text-slate-800 text-sm">Reto Estratégico (Metodología SMART)</h4>
-                                <p class="text-xs text-slate-500 mt-1">Define el objetivo específico, medible, alcanzable, relevante y a tiempo. (Ej: Aumentar ventas un 15% en 3 meses).</p>
+                            <div class="bg-slate-50 border-b border-slate-200 px-5 py-4">
+                                <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-ruta-accent"></i> Reto Estratégico (Metodología SMART)</h4>
+                                <p class="text-xs text-slate-500 mt-2 leading-relaxed">Describa el reto estratégico bajo la metodología SMART. Debe ser Específico, Medible, Alcanzable, Relevante y con un Tiempo definido, estableciendo claramente cómo resolverá el dolor identificado.</p>
                             </div>
                             <div class="p-5">
-                                <textarea id="reto-estrategico" class="w-full border border-slate-300 rounded-md p-3 outline-none focus:ring-2 focus:ring-ruta-light text-sm min-h-[100px]" placeholder="El reto definido para este ciclo es..."></textarea>
+                                <textarea id="reto-estrategico" class="w-full border border-slate-300 rounded-md p-3 outline-none focus:ring-2 focus:ring-ruta-light text-sm min-h-[100px]" placeholder="Ej. Aumentar la tasa de conversión de prospectos a clientes en un 15% durante los próximos 3 meses, mediante la estructuración de..."></textarea>
                                 <p class="text-xs text-slate-400 text-right mt-1" id="reto-char-count">0 / 50 min. caracteres</p>
+                            </div>
+                        </div>
+
+                        <!-- Herramienta Técnica a Desarrollar -->
+                        <div class="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+                            <div class="bg-slate-50 border-b border-slate-200 px-5 py-4">
+                                <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2"><i data-lucide="wrench" class="w-4 h-4 text-ruta-accent"></i> Herramienta Técnica a Desarrollar</h4>
+                                <p class="text-xs text-slate-500 mt-2 leading-relaxed">Especifique y argumente la herramienta técnica o metodológica que se implementará para alcanzar este reto (ej. Matriz DOFA, Lean Canvas, Embudo de Ventas). Justifique por qué es la herramienta idónea para esta UP.</p>
+                            </div>
+                            <div class="p-5">
+                                <textarea id="herramienta-tecnica" class="w-full border border-slate-300 rounded-md p-3 outline-none focus:ring-2 focus:ring-ruta-light text-sm min-h-[100px]" placeholder="Ej. Se implementará un Embudo de Ventas (Sales Funnel) ya que permite visibilizar el recorrido del cliente e identificar en qué etapa específica se están perdiendo las oportunidades comerciales..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -293,13 +304,17 @@
                     <div id="step-content-3" class="space-y-6 animation-fade-in hidden">
                         <div class="mb-4">
                             <h2 class="text-2xl font-bold text-ruta-blue mb-1">Plan de Asistencia</h2>
-                            <p class="text-slate-500 text-sm">Define el Roadmap de acciones a implementar con la Unidad Productiva.</p>
+                            <p class="text-slate-500 text-sm">Define el Roadmap general y sus objetivos claves a implementar.</p>
                         </div>
 
                         <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden border-l-4 border-l-ruta-accent">
-                            <div class="p-5">
+                            <div class="p-6 border-b border-slate-100 bg-slate-50">
+                                <label class="block text-sm font-bold text-slate-800 mb-2">1. Objetivo General del Plan de Asistencia</label>
+                                <input type="text" id="objetivo-general" class="w-full border border-slate-300 rounded-md p-3 focus:ring-2 focus:ring-ruta-light outline-none text-sm" placeholder="Escriba el objetivo principal y macro de todo el plan de acción...">
+                            </div>
+                            <div class="p-6">
                                 <div class="flex justify-between items-center mb-4">
-                                    <label class="block text-sm font-semibold text-slate-800">Hoja de Ruta (Roadmap)</label>
+                                    <label class="block text-sm font-bold text-slate-800">2. Objetivos y Actividades Claves</label>
                                     <button type="button" onclick="addPlanRow()" class="flex items-center gap-1 text-xs bg-slate-100 text-slate-700 hover:bg-slate-200 px-3 py-1.5 rounded-md font-bold transition-colors border border-slate-200">
                                         <i data-lucide="plus" class="w-3.5 h-3.5"></i> Agregar fila
                                     </button>
@@ -308,12 +323,11 @@
                                     <table class="w-full text-left border-collapse min-w-[900px]" id="plan-table">
                                         <thead>
                                             <tr class="bg-slate-50 text-[11px] text-slate-600 border-b border-slate-200 uppercase tracking-wider">
-                                                <th class="p-3 font-bold w-[18%]">Objetivo General</th>
-                                                <th class="p-3 font-bold w-[18%]">Objetivo Clave</th>
-                                                <th class="p-3 font-bold w-[18%]">Proceso Profundización</th>
+                                                <th class="p-3 font-bold w-[22%]">Objetivo Clave</th>
+                                                <th class="p-3 font-bold w-[26%]">Actividades Claves</th>
                                                 <th class="p-3 font-bold w-[12%]">Meta</th>
-                                                <th class="p-3 font-bold w-[12%]">Fecha Límite</th>
-                                                <th class="p-3 font-bold w-[16%]">Responsables</th>
+                                                <th class="p-3 font-bold w-[14%]">Fecha Límite</th>
+                                                <th class="p-3 font-bold w-[20%]">Responsable(s)</th>
                                                 <th class="p-3 font-bold w-[6%] text-center">Acción</th>
                                             </tr>
                                         </thead>
@@ -326,11 +340,43 @@
                         </div>
                     </div>
 
-                    <!-- PASO 4: Firmas y Soportes -->
+                    <!-- PASO 4: Profundización (Preguntas Dinámicas) -->
                     <div id="step-content-4" class="space-y-6 animation-fade-in hidden pb-6">
                         <div class="mb-4">
+                            <h2 class="text-2xl font-bold text-ruta-blue mb-1">Profundización Diagnóstica</h2>
+                            <p class="text-slate-500 text-sm">Análisis focalizado según la línea de intervención: <strong id="lbl-linea-dinamica" class="text-ruta-accent">Pendiente</strong></p>
+                        </div>
+                        
+                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-5 mb-4 text-sm text-amber-800 shadow-sm">
+                            <p class="mb-2"><strong class="flex items-center gap-2"><i data-lucide="info" class="w-5 h-5"></i> Instrucción para el Consultor:</strong></p>
+                            <p class="leading-relaxed">Basado en la línea de intervención seleccionada, revisa las siguientes áreas de evaluación. <strong>Selecciona una (1) pregunta o área específica</strong> en la que se profundizó durante esta sesión y documenta de manera argumentativa el nuevo estatus o avance alcanzado por la empresa en ese punto particular.</p>
+                        </div>
+
+                        <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+                            <div class="p-5 border-b border-slate-100 bg-slate-50">
+                                <h4 class="font-bold text-slate-800 text-sm">Áreas de evaluación de la línea</h4>
+                            </div>
+                            <div class="p-5" id="profundizacion-preguntas-list">
+                                <!-- Lista de radio buttons inyectada por JS -->
+                                <div class="text-center p-8 border-2 border-dashed border-slate-200 rounded-xl bg-slate-50">
+                                    <i data-lucide="alert-circle" class="w-8 h-8 text-slate-400 mx-auto mb-2"></i>
+                                    <p class="text-slate-500 text-sm font-medium">Realiza el Diagnóstico en el Paso 1 para cargar las áreas correspondientes a este módulo.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Caja de texto para el estatus de profundización -->
+                            <div class="p-5 border-t border-slate-200 bg-white" id="profundizacion-textarea-container" style="display: none;">
+                                <label class="block text-sm font-bold text-slate-800 mb-2 flex items-center gap-2"><i data-lucide="edit-3" class="w-4 h-4 text-ruta-accent"></i> Nuevo Estatus / Avance Documentado</label>
+                                <textarea class="w-full border border-slate-300 rounded-md p-4 outline-none focus:ring-2 focus:ring-ruta-light text-sm min-h-[140px]" placeholder="Documenta aquí de manera extensa y argumentativa el hallazgo cualitativo, avance o nuevo estatus de la empresa respecto al área seleccionada arriba..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PASO 5: Firmas y Soportes -->
+                    <div id="step-content-5" class="space-y-6 animation-fade-in hidden pb-6">
+                        <div class="mb-4">
                             <h2 class="text-2xl font-bold text-ruta-blue mb-1">Firmas y Soportes</h2>
-                            <p class="text-slate-500 text-sm">Garantiza la trazabilidad capturando evidencias y validando la asistencia.</p>
+                            <p class="text-slate-500 text-sm">Garantiza la trazabilidad capturando las evidencias de la sesión.</p>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -371,7 +417,7 @@
                                 </div>
                             </div>
 
-                            <!-- Foto Firma Empresario (NUEVO) -->
+                            <!-- Foto Firma Empresario -->
                             <div class="bg-white border border-slate-200 p-5 rounded-xl shadow-sm">
                                 <label class="block text-sm font-bold text-slate-800 mb-1 flex items-center gap-2"><i data-lucide="pen-tool" class="w-4 h-4 text-ruta-accent"></i> 4. Fotografía de la firma</label>
                                 <p class="text-xs text-slate-500 mb-3">Carga obligatoriamente la imagen fotográfica de la firma del empresario.</p>
@@ -381,24 +427,16 @@
                                     <p class="text-xs text-slate-600 font-medium" id="text-firma">Haz clic o arrastra la firma aquí *</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- PASO 5: Profundización (Preguntas Dinámicas) -->
-                    <div id="step-content-5" class="space-y-6 animation-fade-in hidden pb-6">
-                        <div class="mb-4">
-                            <h2 class="text-2xl font-bold text-ruta-blue mb-1">Profundización Diagnóstica</h2>
-                            <p class="text-slate-500 text-sm">Preguntas generadas dinámicamente según la línea de intervención: <strong id="lbl-linea-dinamica" class="text-ruta-accent">Pendiente</strong></p>
-                        </div>
-                        
-                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4 text-sm text-amber-800">
-                            <strong>Instrucción para el Consultor:</strong> Usa estas preguntas (derivadas del diagnóstico de la UP) para ahondar en detalles específicos durante tu conversación y documentar observaciones cualitativas.
-                        </div>
-
-                        <div id="profundizacion-container" class="space-y-4">
-                            <!-- Las preguntas se renderizan aquí vía JS -->
-                            <div class="text-center p-8 border-2 border-dashed border-slate-200 rounded-xl">
-                                <p class="text-slate-400 text-sm font-medium">Realiza el Diagnóstico en el Paso 1 para cargar las preguntas correspondientes a este módulo.</p>
+                            <!-- Documento Herramienta Trabajada (NUEVO) -->
+                            <div class="bg-white border border-slate-200 p-5 rounded-xl shadow-sm md:col-span-2">
+                                <label class="block text-sm font-bold text-slate-800 mb-1 flex items-center gap-2"><i data-lucide="file-check-2" class="w-4 h-4 text-ruta-accent"></i> 5. Herramienta Técnica Trabajada</label>
+                                <p class="text-xs text-slate-500 mb-3">Adjunta el archivo o documento resultado de la herramienta metodológica aplicada en la sesión (ej. PDF, Excel, Imagen del Canvas).</p>
+                                <div class="drop-zone rounded-lg p-6 text-center cursor-pointer relative bg-slate-50" id="drop-herramienta" onclick="document.getElementById('file-herramienta').click()">
+                                    <input type="file" id="file-herramienta" class="hidden" accept="*/*" onchange="handleFileSelect(this, 'herramienta')" />
+                                    <i data-lucide="folder-up" class="w-8 h-8 mx-auto text-slate-400 mb-2"></i>
+                                    <p class="text-sm text-slate-600 font-medium" id="text-herramienta">Haz clic o arrastra el documento de la herramienta aquí</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -478,8 +516,8 @@
 
                 <!-- Paso C: Preguntas -->
                 <div id="diag-step-preguntas" class="hidden">
-                    <h3 class="text-xl font-bold text-center text-slate-800 mb-2">Profundización</h3>
-                    <p class="text-center text-sm text-slate-500 mb-6">Analiza la situación actual en el área seleccionada.</p>
+                    <h3 class="text-xl font-bold text-center text-slate-800 mb-2">Análisis de la Situación Actual</h3>
+                    <p class="text-center text-sm text-slate-500 mb-6">Evalúa la madurez de la empresa en esta línea.</p>
                     <div id="diag-questions-container" class="space-y-6 max-w-2xl mx-auto">
                         <!-- JS injected -->
                     </div>
@@ -511,12 +549,12 @@
                         <div class="bg-white border border-rose-200 rounded-xl p-5 shadow-sm">
                             <h4 class="text-xs font-bold text-rose-500 uppercase tracking-wider mb-2">Reto Principal Identificado</h4>
                             <p id="diag-res-reto" class="font-semibold text-slate-800 text-lg leading-tight mb-2"></p>
-                            <p id="diag-res-insight" class="text-xs text-slate-500"></p>
+                            <p id="diag-res-insight" class="text-xs text-slate-500 mt-2"></p>
                         </div>
                         <div class="bg-white border border-sky-200 rounded-xl p-5 shadow-sm">
                             <h4 class="text-xs font-bold text-sky-500 uppercase tracking-wider mb-2">Solución y Herramienta</h4>
                             <p id="diag-res-herr" class="font-semibold text-slate-800 text-lg leading-tight mb-2"></p>
-                            <p class="text-xs text-slate-500">Se sugiere esta herramienta para abordar estructuralmente el reto.</p>
+                            <p class="text-xs text-slate-500 mt-2">Se sugiere esta herramienta para abordar estructuralmente el reto.</p>
                         </div>
                     </div>
 
@@ -647,8 +685,8 @@
                 finalButtons.classList.remove('flex');
             }
             
-            // Auto-render profundización if Step 5
-            if (currentStep === 5) renderProfundizacionQuestions();
+            // Auto-render profundización if Step 4
+            if (currentStep === 4) renderProfundizacionQuestions();
         }
 
         function nextStep() { if (currentStep < totalSteps) { currentStep++; renderSteps(); } }
@@ -663,7 +701,6 @@
             const val = document.getElementById('db-search-input').value;
             if(!val) { showToast('Ingresa un NIT o Nombre', 'error'); return; }
             
-            // Simulación de respuesta de DB
             document.getElementById('up-nombre').innerText = "Industrias Ejemplo S.A.S.";
             document.getElementById('up-nit').innerText = "900.123.456-7";
             document.getElementById('up-contacto').innerText = "Ana Pérez";
@@ -695,9 +732,8 @@
             const tr = document.createElement('tr');
             tr.className = "border-b border-slate-200 hover:bg-slate-50 transition-colors align-top bg-white";
             tr.innerHTML = `
-                <td class="p-2"><textarea class="w-full border border-slate-300 rounded p-2 text-[13px] outline-none focus:border-ruta-light focus:ring-1 focus:ring-ruta-light resize-y min-h-[60px]" placeholder="Ej. Aumentar ventas..."></textarea></td>
-                <td class="p-2"><textarea class="w-full border border-slate-300 rounded p-2 text-[13px] outline-none focus:border-ruta-light focus:ring-1 focus:ring-ruta-light resize-y min-h-[60px]" placeholder="Ej. Cerrar 5 negocios..."></textarea></td>
-                <td class="p-2"><textarea class="w-full border border-slate-300 rounded p-2 text-[13px] outline-none focus:border-ruta-light focus:ring-1 focus:ring-ruta-light resize-y min-h-[60px]" placeholder="Proceso implementado"></textarea></td>
+                <td class="p-2"><textarea class="w-full border border-slate-300 rounded p-2 text-[13px] outline-none focus:border-ruta-light focus:ring-1 focus:ring-ruta-light resize-y min-h-[60px]" placeholder="Ej. Aumentar conversión..."></textarea></td>
+                <td class="p-2"><textarea class="w-full border border-slate-300 rounded p-2 text-[13px] outline-none focus:border-ruta-light focus:ring-1 focus:ring-ruta-light resize-y min-h-[60px]" placeholder="Ej. 1. Definir prospectos\n2. Hacer llamadas..."></textarea></td>
                 <td class="p-2"><input type="text" class="w-full border border-slate-300 rounded p-2 text-[13px] outline-none focus:border-ruta-light focus:ring-1 focus:ring-ruta-light" placeholder="Ej. 100%" /></td>
                 <td class="p-2"><input type="date" class="w-full border border-slate-300 rounded p-2 text-[13px] outline-none focus:border-ruta-light focus:ring-1 focus:ring-ruta-light" /></td>
                 <td class="p-2"><input type="text" class="w-full border border-slate-300 rounded p-2 text-[13px] outline-none focus:border-ruta-light focus:ring-1 focus:ring-ruta-light" placeholder="Responsable" /></td>
@@ -712,7 +748,7 @@
         }
 
         // ==========================================
-        // FUNCIONES PASO 4 (Firmas y Evidencias)
+        // FUNCIONES PASO 5 (Firmas y Evidencias)
         // ==========================================
         function copyAttendanceLink() {
             const linkInput = document.getElementById('link-asistencia');
@@ -737,11 +773,12 @@
             lucide.createIcons();
         }
 
-        // DRAG AND DROP HANDLERS
-        ['foto', 'firma'].forEach(id => {
+        // DRAG AND DROP HANDLERS (Incluyendo la Herramienta)
+        ['foto', 'firma', 'herramienta'].forEach(id => {
             const dropZone = document.getElementById('drop-' + id);
             const fileInput = document.getElementById('file-' + id);
-            
+            if(!dropZone) return;
+
             dropZone.addEventListener('dragover', (e) => {
                 e.preventDefault();
                 dropZone.classList.add('dragover');
@@ -766,7 +803,7 @@
             const iconElement = dropZone.querySelector('i');
             
             if (file) {
-                if (file.size > 5 * 1024 * 1024) { // 5MB limit
+                if (file.size > 5 * 1024 * 1024) { 
                     showToast('El archivo supera los 5MB permitidos.', 'error');
                     input.value = '';
                     return;
@@ -776,12 +813,21 @@
                 iconElement.classList.replace('text-slate-400', 'text-emerald-500');
                 iconElement.setAttribute('data-lucide', 'check-circle');
                 dropZone.classList.add('has-file');
-                showToast(`Archivo "${file.name}" cargado.`, 'success');
+                showToast(`Archivo cargado con éxito.`, 'success');
             } else {
-                textElement.innerText = type === 'firma' ? "Haz clic o arrastra la firma aquí *" : "Haz clic o arrastra la imagen aquí";
+                let defaultText = "Haz clic o arrastra aquí";
+                if(type === 'firma') defaultText = "Haz clic o arrastra la firma aquí *";
+                if(type === 'herramienta') defaultText = "Haz clic o arrastra el documento de la herramienta aquí";
+                
+                textElement.innerText = defaultText;
                 textElement.classList.replace('text-emerald-700', 'text-slate-600');
                 iconElement.classList.replace('text-emerald-500', 'text-slate-400');
-                iconElement.setAttribute('data-lucide', type === 'firma' ? 'file-signature' : 'image-plus');
+                
+                let defaultIcon = 'image-plus';
+                if(type === 'firma') defaultIcon = 'file-signature';
+                if(type === 'herramienta') defaultIcon = 'folder-up';
+
+                iconElement.setAttribute('data-lucide', defaultIcon);
                 dropZone.classList.remove('has-file');
             }
             lucide.createIcons();
@@ -832,11 +878,11 @@
         };
 
         const RETOS = {
-            comercial: { reto: 'Falta de consolidación comercial y ventas', herr: 'Embudo de Ventas y CRM', insight: 'Necesitas estructurar tus canales de captación para asegurar ingresos predecibles.' },
-            gerencia: { reto: 'Descontrol estratégico y financiero', herr: 'Flujo de Caja y Balanced Scorecard', insight: 'Debes alinear tu estructura de costos con tus proyecciones a largo plazo.' },
-            eficiencia: { reto: 'Operación manual y cuellos de botella', herr: 'Mapeo de Procesos (Lean)', insight: 'Documentar el paso a paso es clave para poder delegar y escalar.' },
-            talento: { reto: 'Estructura y roles confusos', herr: 'Organigrama y Manual de Funciones', insight: 'Clarificar responsabilidades evita la saturación del líder.' },
-            innovacion: { reto: 'Estancamiento tecnológico', herr: 'Hoja de Ruta de Transformación Digital', insight: 'Digitalizar procesos manuales liberará tiempo vital para la gerencia.' }
+            comercial: { reto: 'Falta de consolidación comercial y ventas', herr: 'Embudo de Ventas y CRM', insight: 'Al no tener canales de venta predecibles, la empresa pierde oportunidades clave en su crecimiento.' },
+            gerencia: { reto: 'Descontrol estratégico y financiero', herr: 'Flujo de Caja y Balanced Scorecard', insight: 'Una estructura de costos no alineada con los ingresos genera estancamiento en la rentabilidad.' },
+            eficiencia: { reto: 'Operación manual y cuellos de botella', herr: 'Mapeo de Procesos (Lean)', insight: 'La falta de documentación y estandarización impide delegar y genera dependencia directa.' },
+            talento: { reto: 'Estructura y roles confusos', herr: 'Organigrama y Manual de Funciones', insight: 'La ausencia de responsabilidades claras provoca sobrecarga en el liderazgo y baja eficiencia.' },
+            innovacion: { reto: 'Estancamiento tecnológico', herr: 'Hoja de Ruta de Transformación Digital', insight: 'La dependencia de procesos analógicos frente a un mercado digital retrasa los tiempos de respuesta.' }
         };
 
         // INICIALIZACIÓN DIAGNÓSTICO
@@ -875,7 +921,7 @@
         }
 
         function diagSelect(type, id, el) {
-            const container = el.parentElement;
+            const container = el.closest('.grid');
             container.querySelectorAll('.diag-card').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
             diagState[type] = id;
@@ -890,20 +936,31 @@
             document.getElementById(`diag-step-${step}`).classList.remove('hidden');
             document.getElementById(`diag-step-${step}`).classList.add('block');
 
-            if (step === 'preguntas') renderDiagQuestions();
+            if (step === 'preguntas') {
+                diagState.respuestas = {}; // Reset answers
+                renderDiagQuestions();
+                document.getElementById('btn-diag-preguntas').disabled = true;
+            }
         }
 
         function renderDiagQuestions() {
             const qs = PREGUNTAS[diagState.linea] || [];
             const container = document.getElementById('diag-questions-container');
+            
+            if(qs.length === 0) {
+                container.innerHTML = '<p class="text-center text-slate-500 py-8">No hay preguntas configuradas para esta área.</p>';
+                document.getElementById('btn-diag-preguntas').disabled = false;
+                return;
+            }
+
             container.innerHTML = qs.map((q, i) => `
                 <div class="bg-white border border-slate-200 rounded-lg p-5">
                     <p class="font-bold text-slate-800 text-sm mb-4">${i+1}. ${q.texto}</p>
                     <div class="space-y-2">
                         ${q.opts.map((opt, j) => `
                             <label class="flex items-center gap-3 p-3 border border-slate-100 rounded-md cursor-pointer hover:bg-slate-50 transition-colors">
-                                <input type="radio" name="q${i}" value="${opt}" class="w-4 h-4 text-ruta-accent focus:ring-ruta-accent" onchange="diagCheckAnswers(${qs.length}, '${q.id}', ${opt})">
-                                <span class="text-sm text-slate-600">Opción de respuesta ${j+1} (Peso: ${opt}%)</span>
+                                <input type="radio" name="q${i}" value="${opt}" class="w-4 h-4 text-ruta-accent focus:ring-ruta-accent" onclick="diagCheckAnswers(${qs.length}, '${q.id}', ${opt})">
+                                <span class="text-sm text-slate-600">Opción de respuesta (Valor: ${opt}%)</span>
                             </label>
                         `).join('')}
                     </div>
@@ -922,7 +979,7 @@
             const qs = PREGUNTAS[diagState.linea] || [];
             let sum = 0;
             qs.forEach(q => sum += (diagState.respuestas[q.id] || 0));
-            const score = Math.round(sum / qs.length) || 0;
+            const score = qs.length > 0 ? Math.round(sum / qs.length) : 0;
             
             const r = RETOS[diagState.linea] || RETOS.comercial;
             const lName = LINEAS.find(l=>l.id===diagState.linea).name;
@@ -937,54 +994,69 @@
             diagGoTo('resultados');
         }
 
-        // IMPORTAR DIAGNÓSTICO AL PASO 2 Y PREPARAR PASO 5
+        // IMPORTAR DIAGNÓSTICO AL PASO 2 Y PREPARAR PASO 4
         function importarAlReporte() {
             const r = RETOS[diagState.linea];
             const score = document.getElementById('diag-res-score').innerText;
             const lName = LINEAS.find(l=>l.id===diagState.linea).name;
             
             // Llenar Textareas del Paso 2
-            const dText = `(Importado de Diagnóstico - Área: ${lName} - Madurez: ${score})\n\nSituación identificada:\n${r.insight}\n\nFalta evidenciada:\nSe detecta la necesidad de trabajar en: ${r.reto}.`;
-            document.getElementById('prioridad-dolor').value = dText;
-            document.getElementById('reto-estrategico').value = `Lograr implementar la herramienta [${r.herr}] durante este ciclo para solventar la problemática de [${r.reto.toLowerCase()}].`;
+            const dolorText = `Basados en los resultados del diagnóstico (${lName} - Madurez: ${score}), se evidencia que la unidad productiva se ve fuertemente afectada por: ${r.insight}\n\nEsto representa una prioridad absoluta ya que impacta la rentabilidad y escalabilidad actual del modelo de negocio.`;
+            document.getElementById('prioridad-dolor').value = dolorText;
             
+            document.getElementById('reto-estrategico').value = `Lograr mitigar el problema de [${r.reto.toLowerCase()}] mediante la aplicación de herramientas estructuradas, buscando aumentar la eficiencia un 15% durante el próximo trimestre.`;
+            
+            document.getElementById('herramienta-tecnica').value = `Se propone implementar la herramienta [${r.herr}], dado que permite alinear estructuralmente la operación de la empresa con las mejores prácticas del mercado para resolver este dolor puntual.`;
+
             // Actualizar interfaz del Paso 1 (Success indicator)
             document.getElementById('diag-success-indicator').classList.remove('hidden');
             document.getElementById('diag-success-text').innerText = `Línea: ${lName} | Score: ${score}`;
             
-            // Preparar Paso 5 (Profundización)
+            // Preparar Paso 4 (Profundización)
             document.getElementById('lbl-linea-dinamica').innerText = lName;
+            renderProfundizacionQuestions();
             
             closeDiagModal();
             showToast('Resultados del diagnóstico importados con éxito');
-            // Opcional: Saltar al paso 2 automáticamente
-            // goToStep(2);
         }
 
         // ==========================================
-        // PASO 5: PROFUNDIZACIÓN DINÁMICA
+        // PASO 4: PROFUNDIZACIÓN DINÁMICA
         // ==========================================
         function renderProfundizacionQuestions() {
-            const container = document.getElementById('profundizacion-container');
+            const container = document.getElementById('profundizacion-preguntas-list');
             
             if(!diagState.linea) {
                 container.innerHTML = `
                     <div class="text-center p-8 border-2 border-dashed border-slate-200 rounded-xl bg-slate-50">
                         <i data-lucide="alert-circle" class="w-8 h-8 text-slate-400 mx-auto mb-2"></i>
-                        <p class="text-slate-500 text-sm font-medium">Realiza el Diagnóstico en el Paso 1 para cargar las preguntas correspondientes a este módulo.</p>
+                        <p class="text-slate-500 text-sm font-medium">Realiza el Diagnóstico en el Paso 1 para cargar las áreas correspondientes a este módulo.</p>
                     </div>`;
                 lucide.createIcons();
                 return;
             }
 
             const qs = PREGUNTAS[diagState.linea] || [];
-            container.innerHTML = qs.map((q, i) => `
-                <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-                    <p class="font-bold text-slate-800 text-sm mb-3"><i data-lucide="message-circle-question" class="w-4 h-4 inline text-ruta-accent mr-1"></i> ${q.texto}</p>
-                    <textarea class="w-full border border-slate-300 rounded-md p-3 outline-none focus:ring-2 focus:ring-ruta-light text-[13px] min-h-[80px]" placeholder="Documenta aquí la respuesta o el hallazgo cualitativo de la empresa respecto a este punto..."></textarea>
+            container.innerHTML = `
+                <div class="space-y-3">
+                    ${qs.map((q, i) => `
+                        <label class="flex items-start gap-3 p-4 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors shadow-sm bg-white" onclick="showProfundizacionTextArea()">
+                            <input type="radio" name="prof_q" value="${q.id}" class="w-4 h-4 mt-0.5 text-ruta-accent focus:ring-ruta-accent">
+                            <div>
+                                <p class="font-bold text-slate-800 text-sm leading-tight">${q.texto}</p>
+                                <p class="text-xs text-slate-500 mt-1">Selecciona para documentar avance</p>
+                            </div>
+                        </label>
+                    `).join('')}
                 </div>
-            `).join('');
+            `;
             lucide.createIcons();
+        }
+
+        function showProfundizacionTextArea() {
+            const container = document.getElementById('profundizacion-textarea-container');
+            container.style.display = 'block';
+            container.classList.add('animation-fade-in');
         }
 
         // ==========================================
@@ -1012,7 +1084,7 @@
         function checkNoShow() {
             const fechaInput = document.getElementById('fecha-inicio');
             const btnNoShow = document.getElementById('btn-no-show');
-            if(fechaInput.value) {
+            if(fechaInput && fechaInput.value) {
                 const startTime = new Date(fechaInput.value).getTime();
                 const now = new Date().getTime();
                 const diffMins = (now - startTime) / 60000;
